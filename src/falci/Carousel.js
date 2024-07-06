@@ -1,63 +1,98 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import {
-  ScrollView,
   StyleSheet,
   View,
   Text,
   TouchableOpacity,
-  ImageBackground,
+  Dimensions,
+  Animated,
 } from 'react-native';
-import {HStack} from 'native-base';
 
-const Carousel = () => {
-  const imageUrl = 'https://via.placeholder.com/250x360';
+const {width: screenWidth} = Dimensions.get('window');
+
+const data = [
+  {
+    title: 'Kahve Falı',
+    description:
+      'Kahve mi içtiniz falınızı mı merak ediyorsunuz doğru yerdesiniz.',
+    illustration: 'https://via.placeholder.com/250x360',
+  },
+  {
+    title: 'Tarot Falı',
+    description: 'Tarot kartlarınızı seçin ve geleceğinizi keşfedin.',
+    illustration: 'https://via.placeholder.com/250x360',
+  },
+  {
+    title: 'El Falı',
+    description:
+      'El falınıza baktırmak için uzman falcılarımızla iletişime geçin.',
+    illustration: 'https://via.placeholder.com/250x360',
+  },
+];
+
+const ParallaxCarousel = () => {
+  const scrollX = useRef(new Animated.Value(0)).current;
+  const scrollViewRef = useRef(null);
+
+  useEffect(() => {
+    // Sayfa yüklendikten sonra 1. indekse otomatik olarak kaydırma
+    setTimeout(() => {
+      if (scrollViewRef.current) {
+        scrollViewRef.current.scrollTo({
+          x: screenWidth * 0.8 + 20,
+          animated: true,
+        });
+      }
+    }, 100);
+  }, []);
 
   return (
     <View style={styles.carouselContainer}>
-      <ScrollView
+      <Animated.ScrollView
+        ref={scrollViewRef}
         horizontal
         showsHorizontalScrollIndicator={false}
-        pagingEnabled
-        contentContainerStyle={styles.scrollViewContent}>
-        <HStack space={3}>
-          <ImageBackground
-            source={{uri: imageUrl}}
-            style={styles.card}
-            imageStyle={styles.image}>
-            <Text style={styles.title}>Kahve Falı</Text>
-            <Text style={styles.description}>
-              Kahve mi içtiniz falınızı mı merak ediyorsunuz doğru yerdesiniz.
-            </Text>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Hemen Baktır</Text>
-            </TouchableOpacity>
-          </ImageBackground>
-          <ImageBackground
-            source={{uri: imageUrl}}
-            style={styles.card}
-            imageStyle={styles.image}>
-            <Text style={styles.title}>Tarot Falı</Text>
-            <Text style={styles.description}>
-              Tarot kartlarınızı seçin ve geleceğinizi keşfedin.
-            </Text>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Hemen Baktır</Text>
-            </TouchableOpacity>
-          </ImageBackground>
-          <ImageBackground
-            source={{uri: imageUrl}}
-            style={styles.card}
-            imageStyle={styles.image}>
-            <Text style={styles.title}>El Falı</Text>
-            <Text style={styles.description}>
-              El falınıza baktırmak için uzman falcılarımızla iletişime geçin.
-            </Text>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Hemen Baktır</Text>
-            </TouchableOpacity>
-          </ImageBackground>
-        </HStack>
-      </ScrollView>
+        snapToInterval={screenWidth * 0.8 + 20}
+        decelerationRate="fast"
+        contentContainerStyle={styles.scrollViewContent}
+        onScroll={Animated.event(
+          [{nativeEvent: {contentOffset: {x: scrollX}}}],
+          {useNativeDriver: true},
+        )}
+        scrollEventThrottle={16}>
+        {data.map((item, index) => {
+          const inputRange = [
+            (index - 1) * (screenWidth * 0.8 + 20),
+            index * (screenWidth * 0.8 + 20),
+            (index + 1) * (screenWidth * 0.8 + 20),
+          ];
+
+          const translateX = scrollX.interpolate({
+            inputRange,
+            outputRange: [-50, 0, 50],
+          });
+
+          return (
+            <View
+              style={{width: screenWidth * 0.8, marginHorizontal: 10}}
+              key={index}>
+              <View style={styles.card}>
+                <Animated.Image
+                  source={{uri: item.illustration}}
+                  style={[styles.image, {transform: [{translateX}]}]}
+                />
+                <View style={styles.textContainer}>
+                  <Text style={styles.title}>{item.title}</Text>
+                  <Text style={styles.description}>{item.description}</Text>
+                  <TouchableOpacity style={styles.button}>
+                    <Text style={styles.buttonText}>Hemen Baktır</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+          );
+        })}
+      </Animated.ScrollView>
     </View>
   );
 };
@@ -65,45 +100,52 @@ const Carousel = () => {
 const styles = StyleSheet.create({
   carouselContainer: {
     marginTop: 45,
-    justifyContent: 'start',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   scrollViewContent: {
     alignItems: 'center',
+    paddingHorizontal: (screenWidth - (screenWidth * 0.8 + 20)) / 2,
   },
   card: {
-    justifyContent: 'flex-end',
-    alignItems: 'flex-start',
-    width: 250,
     height: 360,
-    padding: 24,
     borderRadius: 8,
     overflow: 'hidden',
+    backgroundColor: '#f8f8f8',
   },
   image: {
-    borderRadius: 8,
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  },
+  textContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    padding: 16,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#fff',
-    marginBottom: 8,
-    textAlign: 'left',
-    width: '100%',
   },
   description: {
     fontSize: 14,
     color: '#fff',
-    textAlign: 'left',
-    marginBottom: 16,
-    width: '100%',
+    marginTop: 4,
   },
   button: {
     backgroundColor: '#fbc02d',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 8,
-    alignSelf: 'flex-start',
+    marginTop: 10,
   },
   buttonText: {
     color: '#000',
@@ -111,4 +153,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Carousel;
+export default ParallaxCarousel;
