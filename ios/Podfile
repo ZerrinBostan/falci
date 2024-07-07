@@ -23,6 +23,9 @@ target 'falci' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'falciTests' do
     inherit! :complete
     # Pods for testing
