@@ -13,20 +13,18 @@ const {width: screenWidth} = Dimensions.get('window');
 const data = [
   {
     title: 'Kahve Falı',
-    description:
-      'Kahve mi içtiniz falınızı mı merak ediyorsunuz doğru yerdesiniz.',
-    illustration: 'https://via.placeholder.com/250x360',
+    description: 'Kahve mi içtiniz falınızı mı merak ediyorsunuz doğru yerdesiniz.',
+    illustration: require('../assets/home-slider-background.png'),
   },
   {
     title: 'Tarot Falı',
     description: 'Tarot kartlarınızı seçin ve geleceğinizi keşfedin.',
-    illustration: 'https://via.placeholder.com/250x360',
+    illustration: require('../assets/home-slider-background.png'),
   },
   {
     title: 'El Falı',
-    description:
-      'El falınıza baktırmak için uzman falcılarımızla iletişime geçin.',
-    illustration: 'https://via.placeholder.com/250x360',
+    description: 'El falınıza baktırmak için uzman falcılarımızla iletişime geçin.',
+    illustration: require('../assets/home-slider-background.png'),
   },
 ];
 
@@ -78,7 +76,7 @@ const ParallaxCarousel = () => {
               key={index}>
               <View style={styles.card}>
                 <Animated.Image
-                  source={{uri: item.illustration}}
+                  source={item.illustration}
                   style={[styles.image, {transform: [{translateX}]}]}
                 />
                 <View style={styles.textContainer}>
