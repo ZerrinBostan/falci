@@ -2,22 +2,22 @@ import React from 'react';
 import {ScrollView, StyleSheet, View, ImageBackground} from 'react-native';
 import {Text, HStack} from 'native-base';
 
-const CategoriesHighlight = () => {
+const Featured = () => {
   const data = [
     {
       name: 'Zerrin Tepedelen',
       expertise: 'Kahve Falı, Tarot Falı, El Falı....',
-      image: require('../assets/categories-highlight-falci.png'),
+      image: require('../assets/featured-1.png'),
     },
     {
       name: 'Ayşe Can',
       expertise: 'Kahve Falı, Tarot Falı, El Falı....',
-      image: require('../assets/categories-highlight-another-falci.png'),
+      image: require('../assets/featured-2.png'),
     },
   ];
 
   return (
-    <View style={styles.categoriesHighlight}>
+    <View style={styles.featured}>
       <Text style={styles.title}>Öne Çıkanlar</Text>
       <View style={styles.carouselContainer}>
         <ScrollView
@@ -44,7 +44,7 @@ const CategoriesHighlight = () => {
 };
 
 const styles = StyleSheet.create({
-  categoriesHighlight: {
+  featured: {
     marginLeft: 32,
   },
   title: {
@@ -92,4 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CategoriesHighlight;
+export default Featured;

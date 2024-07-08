@@ -2,14 +2,14 @@ import React from 'react';
 import {Text, StyleSheet, ImageBackground} from 'react-native';
 import {Box, VStack} from 'native-base';
 
-const DailyHoroscope = () => {
+const DailyAstrology = () => {
   return (
     <Box style={styles.container}>
       <VStack space={4}>
         <Text style={styles.title}>Günlük Burç Yorumum</Text>
         <Box style={styles.borderContainer}>
           <ImageBackground
-            source={require('../assets/daily-horoscope-background.png')}
+            source={require('../assets/daily-astrology.png')}
             style={styles.imageBackground}
             imageStyle={styles.imageBackgroundImage}>
             <Box style={styles.card}>
@@ -87,4 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DailyHoroscope;
+export default DailyAstrology;

@@ -17,18 +17,18 @@ const data = [
     title: 'Kahve Falı',
     description:
       'Kahve mi içtiniz falınızı mı merak ediyorsunuz doğru yerdesiniz.',
-    illustration: require('../assets/home-slider-background.png'),
+    illustration: require('../assets/fortune-telling-background.png'),
   },
   {
     title: 'Tarot Falı',
     description: 'Tarot kartlarınızı seçin ve geleceğinizi keşfedin.',
-    illustration: require('../assets/home-slider-background.png'),
+    illustration: require('../assets/fortune-telling-background.png'),
   },
   {
     title: 'El Falı',
     description:
       'El falınıza baktırmak için uzman falcılarımızla iletişime geçin.',
-    illustration: require('../assets/home-slider-background.png'),
+    illustration: require('../assets/fortune-telling-background.png'),
   },
 ];
 

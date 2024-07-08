@@ -1,11 +1,11 @@
 import React from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
-import Header from './src/falci/Header';
-import Carousel from './src/falci/Carousel';
-import CategoriesHighlight from './src/falci/CategoriesHighlight';
-
 import {NativeBaseProvider} from 'native-base';
-import DailyHoroscope from './src/falci/DailyHoroscope';
+import Header from './src/FortuneTeller/Header';
+import Carousel from './src/FortuneTeller/Carousel';
+import Featured from './src/FortuneTeller/Featured';
+
+import DailyAstrology from './src/FortuneTeller/DailyAstrology';
 
 const App = () => {
   return (
@@ -13,8 +13,8 @@ const App = () => {
       <ScrollView style={styles.container}>
         <Header />
         <Carousel />
-        <CategoriesHighlight />
-        <DailyHoroscope />
+        <Featured />
+        <DailyAstrology />
       </ScrollView>
     </NativeBaseProvider>
   );
