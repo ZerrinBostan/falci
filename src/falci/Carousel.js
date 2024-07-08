@@ -41,7 +41,7 @@ const ParallaxCarousel = () => {
     setTimeout(() => {
       if (scrollViewRef.current) {
         scrollViewRef.current.scrollTo({
-          x: (screenWidth * 0.7 + 12), // 1. indekse kaydır
+          x: screenWidth * 0.7 + 12, // 1. indekse kaydır
           animated: true,
         });
       }
@@ -133,10 +133,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 4, // Kart aralığı 4px
   },
   card: {
-    height: 300,
-    borderRadius: 8,
+    height: 360,
+    borderRadius: 10,
     overflow: 'hidden',
     backgroundColor: '#f8f8f8',
+    borderWidth: 3,
+    borderColor: '#D7B676',
   },
   image: {
     width: '100%',
@@ -174,8 +176,9 @@ const styles = StyleSheet.create({
   gradient: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'start',
     borderRadius: 4,
+    paddingHorizontal: 12,
   },
   buttonContent: {
     flexDirection: 'row',
@@ -184,7 +187,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#151522',
     fontWeight: '500',
-    marginRight: 5,
   },
 });
 
