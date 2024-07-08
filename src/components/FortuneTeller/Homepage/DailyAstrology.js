@@ -9,7 +9,7 @@ const DailyAstrology = () => {
         <Text style={styles.title}>Günlük Burç Yorumum</Text>
         <Box style={styles.borderContainer}>
           <ImageBackground
-            source={require('../assets/daily-astrology.png')}
+            source={require('../../../assets/fortuneTeller/daily-astrology.png')}
             style={styles.imageBackground}
             imageStyle={styles.imageBackgroundImage}>
             <Box style={styles.card}>

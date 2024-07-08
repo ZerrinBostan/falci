@@ -12,23 +12,25 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const {width: screenWidth} = Dimensions.get('window');
 
+const baseImagePath = '../../../assets/fortuneTeller';
+
 const data = [
   {
     title: 'Kahve Falı',
     description:
       'Kahve mi içtiniz falınızı mı merak ediyorsunuz doğru yerdesiniz.',
-    illustration: require('../assets/fortune-telling-background.png'),
+    illustration: require(`${baseImagePath}/fortune-telling-background.png`),
   },
   {
     title: 'Tarot Falı',
     description: 'Tarot kartlarınızı seçin ve geleceğinizi keşfedin.',
-    illustration: require('../assets/fortune-telling-background.png'),
+    illustration: require(`${baseImagePath}/fortune-telling-background.png`),
   },
   {
     title: 'El Falı',
     description:
       'El falınıza baktırmak için uzman falcılarımızla iletişime geçin.',
-    illustration: require('../assets/fortune-telling-background.png'),
+    illustration: require(`${baseImagePath}/fortune-telling-background.png`),
   },
 ];
 

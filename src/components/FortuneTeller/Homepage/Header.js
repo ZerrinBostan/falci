@@ -9,9 +9,9 @@ import {
   StatusBar,
 } from 'react-native';
 
-import DiamondCircleIcon from '../icons/DiamondCircleIcon';
-import NotificationIcon from '../icons/NotificationIcon';
-import SearchIcon from '../icons/SearchIcon';
+import DiamondCircleIcon from '../../../icons/DiamondCircleIcon';
+import NotificationIcon from '../../../icons/NotificationIcon';
+import SearchIcon from '../../../icons/SearchIcon';
 
 const Header = () => {
   return (

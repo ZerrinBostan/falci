@@ -3,16 +3,18 @@ import {ScrollView, StyleSheet, View, ImageBackground} from 'react-native';
 import {Text, HStack} from 'native-base';
 
 const Featured = () => {
+  const baseImagePath = '../../../assets/fortuneTeller';
+
   const data = [
     {
       name: 'Zerrin Tepedelen',
       expertise: 'Kahve Falı, Tarot Falı, El Falı....',
-      image: require('../assets/featured-1.png'),
+      image: require(`${baseImagePath}/featured-1.png`),
     },
     {
       name: 'Ayşe Can',
       expertise: 'Kahve Falı, Tarot Falı, El Falı....',
-      image: require('../assets/featured-2.png'),
+      image: require(`${baseImagePath}/featured-2.png`),
     },
   ];
 
