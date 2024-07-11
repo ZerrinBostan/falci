@@ -9,8 +9,10 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const Login = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -20,6 +22,7 @@ const Login = () => {
       setError('Şifre Hatalı');
     } else {
       setError('');
+      navigation.navigate('Home');
     }
   };
 
