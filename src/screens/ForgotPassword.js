@@ -14,6 +14,7 @@ import CheckmarkIcon from '../icons/CheckmarkIcon';
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
+  const [resetPasswordVisible, setResetPasswordVisible] = useState(false);
 
   const handleSendLink = () => {
     setModalVisible(true);
@@ -21,55 +22,81 @@ const ForgotPassword = () => {
 
   const handleCloseModal = () => {
     setModalVisible(false);
+    setResetPasswordVisible(true);
   };
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>Girişte Sorun mu Yaşıyorsun?</Text>
-        <Text style={styles.description}>
-          E-posta adresini gir ve sana hesabına yeniden girebilmen için bir
-          bağlantı gönderelim
-        </Text>
-        <TextInput
-          placeholder="E-posta"
-          value={email}
-          onChangeText={setEmail}
-          style={styles.input}
-        />
-        <TouchableOpacity onPress={handleSendLink} style={styles.sendButton}>
-          <Text style={styles.sendButtonText}>Bağlantı Gönder</Text>
-        </TouchableOpacity>
-      </View>
-      <TouchableOpacity style={styles.backToLoginContainer}>
-        <Text style={styles.backToLogin}>Giriş Yapmaya Geri Dön</Text>
-      </TouchableOpacity>
-
-      <Modal
-        transparent={true}
-        animationType="slide"
-        visible={modalVisible}
-        onRequestClose={handleCloseModal}>
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <View style={styles.modalIconContainer}>
-              <CheckmarkIcon width={44} height={34} fill="white" />
-            </View>
-            <Text style={styles.modalTitle}>E-posta Bağlantısı Gönderildi</Text>
-            <Text style={styles.modalDescription}>
-              oktaycandan****14@gmail.com adresine, hesabına yeniden girebilmeni
-              sağlayacak bir bağlantı içeren bir e-posta gönderdik
+      {!resetPasswordVisible ? (
+        <>
+          <View style={styles.content}>
+            <Text style={styles.title}>Girişte Sorun mu Yaşıyorsun?</Text>
+            <Text style={styles.description}>
+              E-posta adresini gir ve sana hesabına yeniden girebilmen için bir
+              bağlantı gönderelim
             </Text>
+            <TextInput
+              placeholder="E-posta"
+              value={email}
+              onChangeText={setEmail}
+              style={styles.input}
+            />
             <TouchableOpacity
-              onPress={handleCloseModal}
-              style={styles.modalButton}>
-              <Text style={styles.modalButtonText}>Tamam</Text>
+              onPress={handleSendLink}
+              style={styles.sendButton}>
+              <Text style={styles.sendButtonText}>Bağlantı Gönder</Text>
             </TouchableOpacity>
           </View>
+          <TouchableOpacity style={styles.backToLoginContainer}>
+            <Text style={styles.backToLogin}>Giriş Yapmaya Geri Dön</Text>
+          </TouchableOpacity>
+
+          <Modal
+            transparent={true}
+            animationType="slide"
+            visible={modalVisible}
+            onRequestClose={handleCloseModal}>
+            <View style={styles.modalContainer}>
+              <View style={styles.modalContent}>
+                <View style={styles.modalIconContainer}>
+                  <CheckmarkIcon width={44} height={34} fill="white" />
+                </View>
+                <Text style={styles.modalTitle}>
+                  E-posta Bağlantısı Gönderildi
+                </Text>
+                <Text style={styles.modalDescription}>
+                  oktaycandan****14@gmail.com adresine, hesabına yeniden
+                  girebilmeni sağlayacak bir bağlantı içeren bir e-posta
+                  gönderdik
+                </Text>
+                <TouchableOpacity
+                  onPress={handleCloseModal}
+                  style={styles.modalButton}>
+                  <Text style={styles.modalButtonText}>Tamam</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+        </>
+      ) : (
+        <View style={styles.content}>
+          <Text style={styles.title}>Yeni Şifre Belirleme</Text>
+          <Text style={styles.description}>
+            Şifreniz minimum 4, maximum 20 karakter olmalıdır.
+          </Text>
+          <TextInput placeholder="Şifre" secureTextEntry style={styles.input} />
+          <TextInput
+            placeholder="Şifre Tekrar"
+            secureTextEntry
+            style={styles.input}
+          />
+          <TouchableOpacity style={styles.sendButton}>
+            <Text style={styles.sendButtonText}>Şifremi Sıfırla</Text>
+          </TouchableOpacity>
         </View>
-      </Modal>
+      )}
     </KeyboardAvoidingView>
   );
 };
