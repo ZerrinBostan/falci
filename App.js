@@ -1,35 +1,52 @@
 import React from 'react';
+import {SSRProvider} from '@react-aria/ssr';
 import {NativeBaseProvider} from 'native-base';
-// import Login from './src/screens/Login';
-// import Home from './src/screens/Home'; 
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
+
+import Login from './src/screens/Login';
+import Home from './src/screens/Home';
 import ForgotPassword from './src/screens/ForgotPassword';
+import Register from './src/screens/Register';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <NativeBaseProvider>
-      {/* <Home /> */}
-      {/* <Login /> */}
-      {/* Home */}
-      <ForgotPassword />
-    </NativeBaseProvider>
+    <SSRProvider>
+      <SafeAreaProvider>
+        <SafeAreaView style={{flex: 1}}>
+          <NavigationContainer>
+            <NativeBaseProvider>
+              <Stack.Navigator initialRouteName="Login">
+                <Stack.Screen
+                  name="Login"
+                  component={Login}
+                  options={{headerShown: false}}
+                />
+                <Stack.Screen
+                  name="Register"
+                  component={Register}
+                  options={{headerShown: false}}
+                />
+                <Stack.Screen
+                  name="ForgotPassword"
+                  component={ForgotPassword}
+                  options={{headerShown: false}}
+                />
+                <Stack.Screen
+                  name="Home"
+                  component={Home}
+                  options={{headerShown: false}}
+                />
+              </Stack.Navigator>
+            </NativeBaseProvider>
+          </NavigationContainer>
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </SSRProvider>
   );
 };
 
 export default App;
-//TODO: navigator stack error will be fixed
-
-/*
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-const Stack = createStackNavigator();
-
-<NativeBaseProvider>
-  <NavigationContainer>
-    <Stack.Navigator initialRouteName="Login">
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-      <Stack.Screen name="Home" component={Home} />
-    </Stack.Navigator>
-  </NavigationContainer>
-</NativeBaseProvider>
-*/
