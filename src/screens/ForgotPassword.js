@@ -9,9 +9,12 @@ import {
   Platform,
   Modal,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import CheckmarkIcon from '../icons/CheckmarkIcon';
 
 const ForgotPassword = () => {
+  const navigation = useNavigation();
+
   const [email, setEmail] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [resetPasswordVisible, setResetPasswordVisible] = useState(false);
@@ -24,6 +27,10 @@ const ForgotPassword = () => {
     setModalVisible(false);
     setResetPasswordVisible(true);
   };
+
+  const handleLogin = () => {
+    navigation.navigate('Login');
+  }
 
   return (
     <KeyboardAvoidingView
@@ -49,7 +56,7 @@ const ForgotPassword = () => {
               <Text style={styles.sendButtonText}>Bağlantı Gönder</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.backToLoginContainer}>
+          <TouchableOpacity style={styles.backToLoginContainer} onPress={handleLogin}>
             <Text style={styles.backToLogin}>Giriş Yapmaya Geri Dön</Text>
           </TouchableOpacity>
 

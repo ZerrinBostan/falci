@@ -20,10 +20,18 @@ const Login = () => {
   const handleLogin = () => {
     if (password !== 'correct_password') {
       setError('Şifre Hatalı');
+      navigation.navigate('Home');
     } else {
       setError('');
-      navigation.navigate('Home');
     }
+  };
+
+  const handleRegister = () => {
+    navigation.navigate('Register');
+  };
+
+  const handleForgotPassword = () => {
+    navigation.navigate('ForgotPassword');
   };
 
   return (
@@ -58,22 +66,24 @@ const Login = () => {
         ) : (
           <View style={styles.placeholder} />
         )}
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleForgotPassword}>
           <Text style={styles.forgotPassword}>Şifreni mi Unuttun?</Text>
         </TouchableOpacity>
       </View>
       <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
         <Text style={styles.loginButtonText}>Giriş Yap</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.registerContainer}>
+      <TouchableOpacity
+        style={styles.registerContainer}
+        onPress={handleRegister}>
         <Text style={styles.registerText}>
           Hesabın yok mu? <Text style={styles.underlineLink}>Kaydol</Text>
         </Text>
       </TouchableOpacity>
       <View style={styles.footer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleRegister}>
           <Text style={styles.footerLink}>
-            Falci olmak ister misin?{' '}
+            Falci olmak ister misin?
             <Text style={styles.link}>Hemen Başla</Text>
           </Text>
         </TouchableOpacity>
