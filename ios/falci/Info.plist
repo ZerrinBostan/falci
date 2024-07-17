@@ -4,25 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SimpleLineIcons.ttf</string>
-		<string>Octicons.ttf</string>
-		<string>MaterialIcons.ttf</string>
-		<string>MaterialCommunityIcons.ttf</string>
-		<string>Ionicons.ttf</string>
-		<string>Foundation.ttf</string>
-		<string>Fontisto.ttf</string>
-		<string>FontAwesome6_Solid.ttf</string>
-		<string>FontAwesome6_Regular.ttf</string>
-		<string>FontAwesome6_Brands.ttf</string>
-		<string>FontAwesome5_Solid.ttf</string>
-		<string>FontAwesome5_Regular.ttf</string>
-		<string>FontAwesome5_Brands.ttf</string>
-		<string>FontAwesome.ttf</string>
-		<string>Feather.ttf</string>
-		<string>EvilIcons.ttf</string>
-		<string>Entypo.ttf</string>
 		<string>AntDesign.ttf</string>
-		<string>Zocial.ttf</string>
+		<string>EvilIcons.ttf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
