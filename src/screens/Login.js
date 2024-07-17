@@ -103,7 +103,10 @@ const styles = StyleSheet.create({
   logoContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 32,
+    marginBottom: 12,
+    borderColor: '#6979F8',
+    borderWidth: 2,
+    borderRadius: 20,
   },
   logoBackground: {
     width: 100,
@@ -122,13 +125,14 @@ const styles = StyleSheet.create({
     elevation: 24,
   },
   logo: {
-    width: 99,
-    height: 99,
+    width: 100,
+    height: 100,
+    borderRadius: 18,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 16,
+    marginBottom: 32,
     color: '#333',
   },
   input: {
