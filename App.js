@@ -7,12 +7,12 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 import Login from './src/screens/Login';
 import Home from './src/screens/Home';
 import ForgotPassword from './src/screens/ForgotPassword';
 import Register from './src/screens/Register';
+import Profile from './src/screens/Profile';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -20,23 +20,29 @@ const Tab = createBottomTabNavigator();
 const PaymentsScreen = () => (
   <View style={styles.centered}>
     <Text>Ödemeler</Text>
-    <AntDesign name="login" size={50} color="blue" />
-    <EvilIcons name="chart" size={50} color="blue" />
   </View>
 );
 
-const ProfileScreen = () => (
+const StartChatScreen = () => (
   <View style={styles.centered}>
-    <Text>Profil</Text>
-    <AntDesign name="user" size={50} color="blue" />
+    <Text>Görüşme Başlat</Text>
   </View>
 );
 
 const ChatsScreen = () => (
   <View style={styles.centered}>
     <Text>Görüşmeler</Text>
-    <AntDesign name="message1" size={50} color="blue" />
   </View>
+);
+
+const ProfileStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Profile"
+      component={Profile}
+      options={{headerShown: false}}
+    />
+  </Stack.Navigator>
 );
 
 const screenOptions = ({route}) => ({
@@ -57,6 +63,8 @@ const screenOptions = ({route}) => ({
       iconName = 'profile';
     } else if (route.name === 'Wallet') {
       iconName = 'wallet';
+    } else if (route.name === 'StartChat') {
+      iconName = 'pluscircle';
     }
 
     return <AntDesign name={iconName} size={size} color={color} />;
@@ -79,12 +87,17 @@ const screenOptions = ({route}) => ({
 const HomeTabs = () => {
   return (
     <Tab.Navigator screenOptions={screenOptions}>
+      <Tab.Screen name="Home" component={Home} options={{tabBarLabel: ''}} />
       <Tab.Screen
         name="History"
         component={PaymentsScreen}
         options={{tabBarLabel: ''}}
       />
-      <Tab.Screen name="Home" component={Home} options={{tabBarLabel: ''}} />
+      <Tab.Screen
+        name="StartChat"
+        component={StartChatScreen}
+        options={{tabBarLabel: ''}}
+      />
       <Tab.Screen
         name="Wallet"
         component={ChatsScreen}
@@ -92,8 +105,11 @@ const HomeTabs = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
-        options={{tabBarLabel: ''}}
+        component={ProfileStack}
+        options={{
+          tabBarLabel: '',
+          headerShown: false,
+        }}
       />
     </Tab.Navigator>
   );
