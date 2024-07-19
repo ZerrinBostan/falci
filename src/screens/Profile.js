@@ -135,7 +135,7 @@ const Profile = ({navigation}) => {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => {
@@ -193,6 +193,7 @@ const Profile = ({navigation}) => {
           data={conversations}
           renderItem={renderConversation}
           keyExtractor={item => item.id.toString()}
+          contentContainerStyle={{paddingBottom: 16}}
         />
       )}
       {activeTab === 'Yorumlar' && (
@@ -200,10 +201,11 @@ const Profile = ({navigation}) => {
           data={comments}
           renderItem={renderComment}
           keyExtractor={item => item.id.toString()}
+          contentContainerStyle={{paddingBottom: 16}}
         />
       )}
       {activeTab === 'Profil Düzenlemesi' && (
-        <View style={styles.editProfileContainer}>
+        <ScrollView style={styles.editProfileContainer}>
           <TextInput style={styles.input} placeholder="Ad" value="Ayşegül" />
           <TextInput style={styles.input} placeholder="Soyad" value="Yıldız" />
           <TextInput
@@ -228,9 +230,9 @@ const Profile = ({navigation}) => {
               <Text style={styles.deleteButtonText}>Hesabımı Sil</Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </ScrollView>
       )}
-    </ScrollView>
+    </View>
   );
 };
 
