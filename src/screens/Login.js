@@ -140,8 +140,8 @@ const styles = StyleSheet.create({
     padding: 12,
     marginBottom: 8,
     borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
+    borderColor: '#E4E4E4',
+    borderRadius: 4,
   },
   inputRow: {
     flexDirection: 'row',

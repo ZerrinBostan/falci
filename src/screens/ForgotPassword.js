@@ -30,7 +30,7 @@ const ForgotPassword = () => {
 
   const handleLogin = () => {
     navigation.navigate('Login');
-  }
+  };
 
   return (
     <KeyboardAvoidingView
@@ -56,7 +56,9 @@ const ForgotPassword = () => {
               <Text style={styles.sendButtonText}>Bağlantı Gönder</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.backToLoginContainer} onPress={handleLogin}>
+          <TouchableOpacity
+            style={styles.backToLoginContainer}
+            onPress={handleLogin}>
             <Text style={styles.backToLogin}>Giriş Yapmaya Geri Dön</Text>
           </TouchableOpacity>
 
@@ -141,9 +143,9 @@ const styles = StyleSheet.create({
   input: {
     width: '100%',
     padding: 12,
-    marginBottom: 16,
+    marginBottom: 8,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: '#E4E4E4',
     borderRadius: 4,
   },
   sendButton: {
