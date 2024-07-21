@@ -21,26 +21,26 @@ const Register = () => {
 
   const handleRegister = () => {
     let valid = true;
-    let errors = {};
+    let registerErrors = {};
 
     if (!firstName) {
-      errors.firstName = 'Adınız boş bırakılamaz';
+      registerErrors.firstName = 'Adınız boş bırakılamaz';
       valid = false;
     }
     if (!lastName) {
-      errors.lastName = 'Soyadınız boş bırakılamaz';
+      registerErrors.lastName = 'Soyadınız boş bırakılamaz';
       valid = false;
     }
     if (!email.includes('@')) {
-      errors.email = 'Geçersiz e-posta adresi';
+      registerErrors.email = 'Geçersiz e-posta adresi';
       valid = false;
     }
     if (password.length < 4) {
-      errors.password = 'Şifreniz minimum 4 karakter olmalıdır';
+      registerErrors.password = 'Şifreniz minimum 4 karakter olmalıdır';
       valid = false;
     }
     if (password !== confirmPassword) {
-      errors.confirmPassword = 'Şifreler eşleşmiyor';
+      registerErrors.confirmPassword = 'Şifreler eşleşmiyor';
       valid = false;
     }
 

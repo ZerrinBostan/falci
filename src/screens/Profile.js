@@ -140,12 +140,6 @@ const Profile = ({navigation}) => {
 
   const tabWidth = Dimensions.get('window').width / 2;
 
-  // const genderOptions = [
-  //   {label: 'Erkek', value: 'Erkek'},
-  //   {label: 'Kadın', value: 'Kadın'},
-  //   {label: 'Özel', value: 'Özel'},
-  // ];
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -283,20 +277,6 @@ const Profile = ({navigation}) => {
               value="aysegulyildiz1@gmail.com"
             />
           </View>
-          {/* <View style={styles.inputContainer}>
-            <Text style={styles.inputLabel}>Cinsiyet</Text>
-            <Radio.Group
-              name="genderGroup"
-              value={gender}
-              onChange={nextValue => setGender(nextValue)}
-              accessibilityLabel="gender">
-              {genderOptions.map(option => (
-                <Radio key={option.value} value={option.value} my={1}>
-                  {option.label}
-                </Radio>
-              ))}
-            </Radio.Group>
-          </View> */}
           <View style={styles.inputContainer}>
             <Text style={styles.inputLabel}>Doğum Tarihi</Text>
             <TextInput style={styles.input} placeholder="GG/AA/YYYY" />

@@ -73,9 +73,7 @@ const Login = () => {
       <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
         <Text style={styles.loginButtonText}>Giriş Yap</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.registerContainer}
-        onPress={handleRegister}>
+      <TouchableOpacity onPress={handleRegister}>
         <Text style={styles.registerText}>
           Hesabın yok mu? <Text style={styles.underlineLink}>Kaydol</Text>
         </Text>
@@ -177,7 +175,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 400,
   },
-  registerContainer: {},
   registerText: {
     color: '#999999',
     fontSize: 16,
