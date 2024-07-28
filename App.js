@@ -13,15 +13,10 @@ import Home from './src/screens/Home';
 import ForgotPassword from './src/screens/ForgotPassword';
 import Register from './src/screens/Register';
 import Profile from './src/screens/Profile';
+import UserHome from './src/screens/UserHome';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-
-const PaymentsScreen = () => (
-  <View style={styles.centered}>
-    <Text>Ödemeler</Text>
-  </View>
-);
 
 const StartChatScreen = () => (
   <View style={styles.centered}>
@@ -90,7 +85,7 @@ const HomeTabs = () => {
       <Tab.Screen name="Home" component={Home} options={{tabBarLabel: ''}} />
       <Tab.Screen
         name="History"
-        component={PaymentsScreen}
+        component={UserHome}
         options={{tabBarLabel: ''}}
       />
       <Tab.Screen
@@ -106,10 +101,7 @@ const HomeTabs = () => {
       <Tab.Screen
         name="Profile"
         component={ProfileStack}
-        options={{
-          tabBarLabel: '',
-          headerShown: false,
-        }}
+        options={{tabBarLabel: '', headerShown: false}}
       />
     </Tab.Navigator>
   );
